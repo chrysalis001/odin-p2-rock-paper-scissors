@@ -76,11 +76,37 @@ function playRound(humanChoice, computerChoice) {
     return roundResult;
 }
 
+// 5. Play 5 rounds
+function playGame() {
+    // initiate round counter and scoreboard //
+    let round = 0;
+    let humanScore = 0;
+    let computerScore = 0;
 
-// 3. Declare the player's score variables //
-let humanScore = 0;
-let computerScore = 0;
+    // loop for playRound //
+    while(round < 5) {
+        let computerSelection = getComputerChoice();
+        let humanSelection = getHumanChoice();
+        let roundResult = playRound(humanSelection, computerSelection);
+        if (roundResult == "win") {
+            humanScore++
+            alert("You won!");
+        }
+        else if (roundResult == "lose") {
+            computerScore++
+            alert("You lost!");
+        }
+        else {
+            alert("Draw!");
+        }
+        round++;
+    }
+    
+    // game result //
+    console.log("Human: " + humanScore + " : " + "Computer: " + computerScore);
+}
 
-const computerSelection = getComputerChoice();
-const humanSelection = getHumanChoice();
-playRound(humanSelection, computerSelection);
+
+
+
+playGame()
