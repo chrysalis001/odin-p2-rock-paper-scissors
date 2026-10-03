@@ -30,5 +30,57 @@ function getHumanChoice() {
     return humanChoice;
 }
 
-getComputerChoice();
-getHumanChoice();
+// 4. Write the logic to play a single round //
+function playRound(humanChoice, computerChoice) {
+    // make humanChoice case insensitive //
+    humanChoice = humanChoice.toLowerCase();
+
+    // Conditionals to correspond winning conditions to human choices
+    let roundResult = "Failure to resolve round";
+    if (humanChoice == "rock") {
+        if (computerChoice == "rock") {
+            roundResult = "draw";
+        }
+        else if (computerChoice == "paper") {
+            roundResult = "lose";
+        }
+        else {
+            roundResult = "win";
+        }
+    }
+    if (humanChoice == "paper") {
+        if (computerChoice == "rock") {
+            roundResult = "win";
+        }
+        else if (computerChoice == "paper") {
+            roundResult = "draw";
+        }
+        else {
+            roundResult = "lose";
+        }
+    }
+    if (humanChoice == "scissors") {
+        if (computerChoice == "rock") {
+            roundResult = "lose";
+        }
+        else if (computerChoice == "paper") {
+            roundResult = "win";
+        }
+        else {
+            roundResult = "draw";
+        }
+    }
+    
+    // return round result //
+    console.log(roundResult);
+    return roundResult;
+}
+
+
+// 3. Declare the player's score variables //
+let humanScore = 0;
+let computerScore = 0;
+
+const computerSelection = getComputerChoice();
+const humanSelection = getHumanChoice();
+playRound(humanSelection, computerSelection);
